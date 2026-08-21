@@ -1,0 +1,10 @@
+#include <iostream>
+using namespace std;
+int main () {
+double base,altura,area:
+cout<<"ingrese base:"
+cin>> base;
+cout<<"ingrese altura:"
+cin>> altura;
+area=base*altura;
+cout<<"area es:" area>>endl;}
