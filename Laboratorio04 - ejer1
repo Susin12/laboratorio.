@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main () {
+
+    string nombre;
+    int consumo;
+    int total;
+    int fijo = 1000 ;
+    float tarifa ;
+
+
+    cout << "Ingrese el nombre del cliente: ";
+    cin >> nombre;
+    cout << " Ingrese el consumos en: ";
+    cin >> consumo;
+
+
+
+    if (consumo == 0)
+    {
+        total = consumo + 10 ;
+        cout << " Sin consumo registrado " << endl;
+        cout << "total a pagar: " << total <<endl;
+    }
+
+    if ( consumo > 0 && consumo <= 15){
+            tarifa = 120 ;
+            cout << " categoria; consumo minimo: " << endl;}
+
+
+
+    else if (consumo > 15 && consumo <= 35 ) {
+      tarifa= 250 ;
+            cout << " categoria; consumo domestico: " << endl ; }
+
+
+    else if  ( consumo > 35 && consumo <= 70) {
+            tarifa= 400 ;
+             cout << "categoria; consumo comercial: " <<endl ; }
+
+    else if ( consumo > 70 ) {
+            tarifa= 650 ;
+             cout << "categoria; consumo alto / industrial: " << endl ; }
+   else { cout << " consumo invalido " << endl ;
+           return 0 ;}
+
+
+       total = consumo * tarifa + fijo;
+
+       cout << "Nombre ; " << nombre << endl ;
+       cout << "pago total ; Bs " << total / 100 <<  "." << total % 100 << endl ;
+       cout << " monto fijo;  BS 10" << endl ;
+
+       return 0;}
+
+
+
+
