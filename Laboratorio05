@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    char opcion;
+    double peso, costo, extra;
+
+    do {
+
+        cout << "\n----MENU DE ENVIO----" << endl;
+        cout << "L. La Paz / El Alto" << endl;
+        cout << "C. Cochabamba" << endl;
+        cout << "S. Santa Cruz" << endl;
+        cout << "O. Salir" << endl;
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+
+            case 'L':
+            case 'l':
+                cout << "Ingrese el peso del paquete en kg: ";
+                cin >> peso;
+
+                costo = 7;
+                 if (peso > 2) {
+                    extra = peso - 2;
+                    costo = costo + (extra * 3);
+                }
+
+                cout << "Costo de envio: Bs " << costo << endl;
+                break;
+
+            case 'C':
+            case 'c':
+                cout << "Ingrese el peso del paquete en kg: ";
+                cin >> peso;
+
+                costo = 5;
+
+                if (peso > 2) {
+                    extra = peso - 2;
+                    costo = costo + (extra * 2);
+                }
+
+                cout << "Costo de envio: Bs " << costo << endl;
+                break;
+
+            case 'S':
+            case 's':
+                cout << "Ingrese el peso del paquete en kg: ";
+                cin >> peso;
+
+                costo = 8;
+
+                if (peso > 2) {
+                    extra = peso - 2;
+                    costo = costo + (extra * 4);
+                }
+
+                cout << "Costo de envio: Bs " << costo << endl;
+                break;
+
+            case 'O':
+            case 'o':
+                cout << "Saliendo del sistema..." << endl;
+                break;
+            default:
+                cout << "Opcion no valida." << endl;
+                break ;     }
+
+                } while (opcion != 'X' && opcion != 'x');
+
+       return 0;}
+
+
+
+
+
+
+C
