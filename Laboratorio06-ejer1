@@ -3,14 +3,13 @@ using namespace std;
 
 int main() {
     int N;
-    int suma = 0;
+    double suma = 0;
 
     cout << "Ingrese un numero entero positivo N: ";
     cin >> N;
 
     for (int i = 1; i <= N; i++) {
-        // Aqui va el termino de la serie
-        // suma = suma + termino;
+        suma = suma + (1.0 / i);
     }
 
     cout << "La suma de la serie es: " << suma << endl;
@@ -18,5 +17,6 @@ int main() {
     return 0;
 }
 
+c
 
 
