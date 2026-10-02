@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N;
+    int suma = 0;
+
+    cout << "Ingrese un numero entero positivo N: ";
+    cin >> N;
+
+    for (int i = 1; i <= N; i++) {
+        // Aqui va el termino de la serie
+        // suma = suma + termino;
+    }
+
+    cout << "La suma de la serie es: " << suma << endl;
+
+    return 0;
+}
+
+
+
