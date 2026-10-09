@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int leerVentas() {
+    int venta;
+
+    cout << "Ingrese la venta del dia: ";
+    cin >> venta;
+
+    return venta;int32_t
+    }
+
+void procesarVentas(int venta, int &total,
+                    float &promedio, int &dias) {
+    total = venta;
+    promedio = venta;
+    dias = 0;
+    }
+
+void mostrarResultados(int total, float promedio, int dias) {
+    cout << "\n--- RESULTADOS ---" << endl;
+    cout << "Total vendido: " << total << endl;
+    cout << "Promedio diario: " << promedio << endl;
+    cout << "Dias superiores al promedio: " << dias << endl;
+     }
+
+int main() {
+    int venta, total, dias;
+    float promedio;
+
+    venta = leerVentas();
+
+    procesarVentas(venta, total, promedio, dias);
+
+    mostrarResultados(total, promedio, dias);
+
+    return 0;
+}
