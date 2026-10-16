@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+float leerNotas(int n) {
+    float nota, suma = 0;
+
+    for (int i = 1; i <= n; i++) {
+        do {
+            cout << "Ingrese la nota " << i << " (0 a 100): ";
+            cin >> nota;
+        } while (nota < 0 || nota > 100);
+
+        suma = suma + nota;
+    }
+
+    return suma / n;
+}
+
+void mostrarResultado(float promedio) {
+    cout << "Promedio: " << promedio << endl;
+
+    if (promedio >= 51) {
+        cout << "Estudiante aprobado" << endl;
+    } else {
+        cout << "Estudiante reprobado" << endl;
+    }
+}
+
+int main() {
+    int n;
+    float promedio;
+
+    do {
+        cout << "Ingrese la cantidad de evaluaciones: ";
+        cin >> n;
+    } while (n <= 0);
+
+    promedio = leerNotas(n);
+    mostrarResultado(promedio);
+
+    return 0;
+}
