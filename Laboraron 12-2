@@ -1,0 +1,67 @@
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// Prototipos
+void leerCoeficientes(double &a, double &b, double &c);
+double calcularDiscriminante(double a, double b, double c);
+void calcularRaices(double a, double b, double d,
+                    double &x1, double &x2);
+void mostrarResultado(double a, double d, double x1, double x2);
+
+int main() {
+    double a, b, c, d, x1, x2;
+
+    leerCoeficientes(a, b, c);
+    d = calcularDiscriminante(a, b, c);
+
+    x1 = 0;
+    x2 = 0;
+
+    if (a != 0 && d >= 0) {
+        calcularRaices(a, b, d, x1, x2);
+    }
+
+    mostrarResultado(a, d, x1, x2);
+
+    return 0;
+}
+
+// Leer coeficientes
+void leerCoeficientes(double &a, double &b, double &c) {
+    cout << "Ingrese a: ";
+    cin >> a;
+    cout << "Ingrese b: ";
+    cin >> b;
+    cout << "Ingrese c: ";
+    cin >> c;
+}
+
+// Calcular discriminante
+double calcularDiscriminante(double a, double b, double c) {
+    return b * b - 4 * a * c;
+}
+
+// Calcular raíces
+void calcularRaices(double a, double b, double d,
+                    double &x1, double &x2) {
+    x1 = (-b + sqrt(d)) / (2 * a);
+    x2 = (-b - sqrt(d)) / (2 * a);
+}
+
+// Mostrar resultado
+void mostrarResultado(double a, double d, double x1, double x2) {
+    if (a == 0) {
+        cout << "La ecuacion no es cuadratica." << endl;
+    } else if (d > 0) {
+        cout << "Dos soluciones reales:" << endl;
+        cout << "x1 = " << x1 << endl;
+        cout << "x2 = " << x2 << endl;
+    } else if (d == 0) {
+        cout << "Una solucion real doble:" << endl;
+        cout << "x = " << x1 << endl;
+    } else {
+        cout << "No existen soluciones reales." << endl;
+    }
+}
