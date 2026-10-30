@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N;
+
+    do {
+        cout << "Ingrese la cantidad de evaluaciones (1 a 100): ";
+        cin >> N;
+
+        if (!(N >= 1 && N <= 100)) {
+            cout << "Cantidad invalida.\n";
+        }
+    } while (!(N >= 1 && N <= 100));
+
+    double notas[100];
+    double suma = 0;
+
+    for (int i = 0; i < N; i++) {
+        do {
+            cout << "Ingrese la nota " << i + 1 << ": ";
+            cin >> notas[i];
+
+            if (!(notas[i] >= 0 && notas[i] <= 100)) {
+                cout << "Nota invalida. Debe estar entre 0 y 100.\n";
+            }
+        } while (!(notas[i] >= 0 && notas[i] <= 100));
+
+        suma = suma + notas[i];
+    }
+
+    double promedio = suma / N;
+
+    cout << "\nPromedio general: " << promedio << endl;
+
+    if (promedio >= 51) {
+        cout << "Estudiante aprobado." << endl;
+    } else {
+        cout << "Estudiante reprobado." << endl;
+    }
+
+    return 0;
+}
