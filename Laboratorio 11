@@ -1,0 +1,217 @@
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+// PROTOTIPOS DE FUNCIONES
+void registrar(int v[], int n);
+void mostrar(int v[], int n);
+float promedio(int v[], int n);
+void extremos(int v[], int n, int &mayor, int &menor);
+int contarAprobados(int v[], int n);
+int buscar(int v[], int n, int valor);
+void actualizar(int v[], int n);
+
+// FUNCION PRINCIPAL
+int main() {
+    int notas[30], n;
+    int mayor, menor;
+    int aprobados, reprobados;
+    int valor, posicion;
+
+    // Solicitar cantidad de estudiantes
+    do {
+        cout << "Cantidad de estudiantes (1-30): ";
+        cin >> n;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            n = 0;
+        }
+
+        if (n < 1 || n > 30) {
+            cout << "Cantidad invalida. Intente nuevamente.\n";
+        }
+
+    } while (n < 1 || n > 30);
+
+    // Registrar calificaciones
+    registrar(notas, n);
+
+    // Mostrar calificaciones
+    cout << "\n--- CALIFICACIONES ---\n";
+    mostrar(notas, n);
+
+    // Calcular promedio
+    cout << fixed << setprecision(2);
+    cout << "\nPromedio: " << promedio(notas, n) << endl;
+
+    // Obtener mayor y menor
+    extremos(notas, n, mayor, menor);
+
+    cout << "Mayor: " << mayor << endl;
+    cout << "Menor: " << menor << endl;
+
+    // Contar aprobados y reprobados
+    aprobados = contarAprobados(notas, n);
+    reprobados = n - aprobados;
+
+    cout << "Aprobados: " << aprobados << endl;
+    cout << "Reprobados: " << reprobados << endl;
+
+    // Buscar una calificacion
+    cout << "\nBuscar nota: ";
+    cin >> valor;
+
+    while (cin.fail() || valor < 0 || valor > 100) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Ingrese una nota valida (0-100): ";
+        cin >> valor;
+    }
+
+    posicion = buscar(notas, n, valor);
+
+    if (posicion != -1) {
+        cout << "Nota encontrada en el estudiante: "
+             << posicion + 1 << endl;
+    } else {
+        cout << "La nota no existe.\n";
+    }
+
+    // Actualizar una calificacion
+    actualizar(notas, n);
+
+    // Mostrar resultados actualizados
+    cout << "\n--- NOTAS ACTUALIZADAS ---\n";
+    mostrar(notas, n);
+
+    cout << "Nuevo promedio: "
+         << promedio(notas, n) << endl;
+
+    return 0;
+}
+
+// DEFINICION DE FUNCIONES
+
+// 1. REGISTRAR
+void registrar(int v[], int n) {
+    for (int i = 0; i < n; i++) {
+        do {
+            cout << "Nota del estudiante " << i + 1 << ": ";
+            cin >> v[i];
+
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(1000, '\n');
+                v[i] = -1;
+            }
+
+            if (v[i] < 0 || v[i] > 100) {
+                cout << "Nota invalida. Ingrese entre 0 y 100.\n";
+            }
+
+        } while (v[i] < 0 || v[i] > 100);
+    }
+}
+
+// 2. MOSTRAR
+void mostrar(int v[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Estudiante " << i + 1
+             << ": " << v[i] << endl;
+    }
+}
+
+// 3. PROMEDIO
+float promedio(int v[], int n) {
+    int suma = 0;
+
+    for (int i = 0; i < n; i++) {
+        suma += v[i];
+    }
+
+    return (float)suma / n;
+}
+
+// 4. MAYOR Y MENOR
+void extremos(int v[], int n, int &mayor, int &menor) {
+    mayor = v[0];
+    menor = v[0];
+
+    for (int i = 1; i < n; i++) {
+        if (v[i] > mayor) {
+            mayor = v[i];
+        }
+
+        if (v[i] < menor) {
+            menor = v[i];
+        }
+    }
+}
+
+// 5. CONTAR APROBADOS
+int contarAprobados(int v[], int n) {
+    int contador = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (v[i] >= 51) {
+            contador++;
+        }
+    }
+
+    return contador;
+}
+
+// 6. BUSCAR
+int buscar(int v[], int n, int valor) {
+    for (int i = 0; i < n; i++) {
+        if (v[i] == valor) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+// 7. ACTUALIZAR
+void actualizar(int v[], int n) {
+    int pos, nuevo;
+
+    do {
+        cout << "\nModificar estudiante (1-" << n << "): ";
+        cin >> pos;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            pos = 0;
+        }
+
+        if (pos < 1 || pos > n) {
+            cout << "Posicion invalida.\n";
+        }
+
+    } while (pos < 1 || pos > n);
+
+    do {
+        cout << "Nueva nota: ";
+        cin >> nuevo;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            nuevo = -1;
+        }
+
+        if (nuevo < 0 || nuevo > 100) {
+            cout << "Nota invalida. Ingrese entre 0 y 100.\n";
+        }
+
+    } while (nuevo < 0 || nuevo > 100);
+
+    v[pos - 1] = nuevo;
+
+    cout << "Nota actualizada correctamente.\n";
+}
